@@ -11,7 +11,7 @@ Team Members: Blake Lord, Brandon Piotrowski, Ryan Borland, Seth Emery
 
 Pull Repository
 
-    git clone https://github.com/collaboratorsje/swe-capstone.git
+    git clone https://github.com/bpiotrowski154/capstone.git
 
 Virtual Environment Setup
 
