@@ -1,0 +1,353 @@
+:root{
+    --light-blue: #0066CC;
+    --dark-blue:#04487F;
+    --hover-blue: #003058;
+    --yellow: #FFD52F;
+    --white: #FFFFFF;
+    --search-bg-blue: #e5eef5;
+    --search-input-blue: #6b94b5;
+}
+
+
+.input-width{
+    width: 50%;
+}
+
+.form-label
+{
+    width: 10%;
+}
+.required .form-label::after
+{
+    color: red;
+    content: "*";
+    padding-left: 1%;
+}
+
+.bg-light-blue{
+    background-color: var(--light-blue);
+}
+.bg-dark-blue{
+    background-color: var(--dark-blue);
+}
+.bg-yellow{
+    background-color: var(--yellow);
+}
+.bg-white{
+    background-color: var(--white);
+}
+.light-blue{
+    color: var(--light-blue);
+}
+.dark-blue{
+    color: var(--dark-blue);
+}
+.yellow{
+    color:var(--yellow);
+}
+.white{
+    color: var(--white);
+}
+
+
+.submit-button{
+    background-color: var(--light-blue);
+    color: var(--white);   
+}
+.submit-button:hover{
+    background-color: var(--dark-blue);
+    
+}
+
+.my-navbar {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}
+.small-my-navbar {
+    border-radius: 10px;
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    width: 80%;
+    margin: auto;
+}
+.nav-tabs {
+    border-bottom: 0px solid transparent;
+}
+
+.nav-tabs .nav-link{
+    background-color: var(--dark-blue);
+    color: var(--white);
+    font-weight: bold;
+}
+.nav-tabs .nav-link:hover {
+    background-color: var(--hover-blue);
+    cursor: pointer;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--yellow);
+    /*color: rgb(217, 0, 255);*/
+    color: var(--dark-blue);
+}
+
+.nav-pills .nav-link {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: var(--hover-blue);
+    cursor: pointer;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--yellow);
+    /*color: rgb(217, 0, 255);*/
+    color: var(--dark-blue);
+}
+
+.apply-btn {
+    background-color: var(--yellow);  
+    border: none;
+}
+
+.apply-btn:hover {
+    background-color: var(--dark-blue); 
+    color: var(--white);
+}
+
+.badge-primary {
+    background-color: var(--dark-blue);
+    color: var(--white);            
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    margin: 1%;
+}
+
+.flex-container-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.flex-child-center{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-child:first-child {
+    margin-right: 1%;
+}
+
+.course-post {
+    border: solid var(--light-blue);
+    border-radius: 5%;
+    margin: 2%;
+    padding: 1%;
+    display: block;
+    padding-bottom: 3%;
+}
+
+.job-post {
+    border: solid var(--light-blue);
+    border-radius: 5%;
+    margin: 2%;
+    padding: 1%;
+    display: block;
+    padding-bottom: 3%;
+}
+
+.flex-child .job-post {
+    flex-direction: column;
+}
+.application-post {
+    border: solid var(--light-blue);
+    border-radius: 5%;
+    margin: 2%;
+    padding: 1%;
+    display: block;
+    padding-bottom: 3%;
+}
+
+
+.btn-remove-course {
+    float: right;
+    align-self: center;
+}
+
+.list-group-item {
+    
+
+    /* Width & Spacing */
+    width: 100%;
+    padding: 10px 15px; /* Add more padding for a spacious feel */
+    margin-bottom: 5px;
+
+    /* Background */
+    background-color: #f7f7f7; /* Light gray background */
+
+    /* Borders & Rounded Corners */
+    border: 2px solid var(--hover-blue); /* Add a light border */
+    border-radius: 10px; /* Rounded corners */
+    /* border-top: 1px solid var(--hover-blue); */
+
+    /* Text Styling */
+    font-weight: 500; /* Slightly bolder text */
+    color: #333; /* Dark gray text */
+
+    /* Shadows */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+
+    /* Transition */
+    /*transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* .list-group-item:hover { */
+   /*  background-color: #e6e6e6; /* Slightly darker gray when hovered */
+   /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
+/*}*/
+.list-group {
+    margin-bottom: 10px;
+}
+
+.alert {
+    transition: opacity 1s; 
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.search-form input[type="text"] {
+    flex-grow: 1;
+    padding: 8px 15px;
+    border-radius: 5px 0 0 5px;
+    border: 2px solid var(--search-bg-blue);
+    background-color: var(--search-bg-blue);
+}
+
+.search-form input[type="text"]:focus {
+    outline: none;
+    font-weight: bold;
+    color: var(--dark-blue);
+}
+
+.search-form button {
+    padding: 8px 15px;
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+    border: 2px solid var(--yellow);
+    border-radius: 0 5px 5px 0;
+    border-color: var(--yellow);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: var(--hover-blue);
+    color: var(--white);
+    border-color: var(--hover-blue);
+}
+
+input::placeholder {
+    font-weight: bold;
+    color: var(--search-input-blue); /* Or any darker color you prefer */
+}
+
+.my-navbar {
+    display: flex;
+    justify-content: space-between; /* Aligns the three sections */
+    align-items: center; /* Vertically centers the content */
+}
+
+.navbar-center {
+    flex-grow: 1; /* Allows the center div to take up the available space */
+    display: flex;
+    justify-content: center; /* Centers the image horizontally */
+}
+
+.navbar-center img {
+    max-height: 50px; /* Adjust the size of the image as needed */
+}
+
+/* Simplified Styling for Select Dropdowns */
+.select-filter {
+    padding: 10px 15px;
+    border: 1px solid var(--yellow);
+    background-color: var(--white);
+    border-radius: 5px; /* Less pronounced rounded corners */
+    font-size: 1em;
+    color: var(--dark-blue);
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.select-filter:focus {
+    border-color: var(--light-blue); /* Highlight the border on focus */
+    background-color: var(--white);
+    outline: none;
+}
+
+/* Simplified Styling for Checkbox */
+.checkbox-custom {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--dark-blue);
+}
+
+.checkbox-custom input[type="checkbox"] {
+    margin-right: 5px; /* Space between checkbox and label */
+    cursor: pointer;
+    accent-color: var(--yellow); /* Styling the checkbox with the theme color */
+}
+
+.checkbox-custom label {
+    margin-left: 5px;
+}
+
+/* Simplified Form Layout */
+.form-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Provides even spacing between elements */
+    margin-bottom: 20px; /* Space between the form and job listings */
+}
+
+
+.admin-tabs{
+    color: var(--white);
+}
+
+.btn-job{
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.accepted-application {
+    background-color: rgb(2, 166, 95) !important;
+    color: white;
+}
+

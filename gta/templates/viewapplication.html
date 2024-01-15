@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Application View</h1>
+<h2>{{job[0][0]}} - {{job[0][1]}}</h2>
+<p>User ID:    {{user.user_id}}</p>
+<p>First Name: {{user.user_fname}}</p>
+<p>Last Name:  {{user.user_lname}}</p>
+<p>Email:      {{user.user_email}}</p>
+<p>Role:       {{user.role}}</p>
+<p>Major:      {{user.major}}</p>
+<p>Degree:     {{user.degree}}</p>
+<p>GPA:        {{user.gpa}}</p>
+<p>Hours:      {{user.hours}}</p>
+<p>Transcript: {{app.transcript_file_name}}</p>
+<p>GTA Certification: {{app.gta_cert_file_name}}</p>
+<ul class="list-group">
+    {% for c in courses %}  
+        <li class="list-group-item">
+            <h5>Course: {{c['course_name']}} - {{c['course_level']}}</h5>
+            <p>Grade: {{c['grade']}}</p>
+        </li>
+        <div></div>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

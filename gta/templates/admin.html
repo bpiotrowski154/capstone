@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Code Here-->
+<div class="flex-container-columm">
+    
+    <h2 style="text-align: center;">Admin Dashboard</h2>
+    
+    <button id="create-job" class="btn btn-primary btn-job">{{render_nav_item('form.CreateJobPage', 'Create Job')}}</button>
+    <nav class="navbar navbar-center small-my-navbar">
+        <ul class="nav nav-pills">
+            <li class="nav-item" style="margin-inline: 5px;">
+                <a class="nav-link" id="jobsButton" onclick="displayJobs(); saveCurrentTab('jobs');">Jobs</a>
+            </li>
+            <li class="nav-item" style="margin-inline: 5px;">
+                <a class="nav-link" id="applicationsButton" onclick="displayApplications(); saveCurrentTab('applications');">Applications</a>
+            </li>            
+            <li class="nav-item" style="margin-inline: 5px;">
+                <a class="nav-link" id = "usersButton" onclick="displayUsers(); saveCurrentTab('users');">Users</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="flex-container-column">
+    <div class="flex-child active" style="display: block;"  id="jobsList">
+        <h3>Jobs</h3>
+            <ul id="job-list-group" class="list-group">
+                {% for j in jobs %}
+                    <li class="list-group-item">
+                        <h5 id="course-name">{{ j['course'] }} <span class="badge badge-primary">{{ j['role_name'] }}</span></h5>
+                        <p>{% if j['cert_required'] %}<span class="badge badge-primary">Certification Required</span>{% else %}&nbsp;{% endif %}</p>
+                        <p>Job ID: {{ j['job_id'] }}</p>
+                        <!-- Additional job details here, if any -->
+                        <a href="{{ url_for('form.EditJob', job_id= j['job_id'])}}"  id="job-edit" class="btn btn-primary">Edit</a>
+                        <button id="job-close" class="btn btn-danger" onclick="confirmAndRemoveJob({{ j['job_id'] }})">Remove Job</button>
+                    </li>
+                    <div></div>
+                {% endfor %}
+            </ul>
+    </div>
+    <div class="flex-child" style="display: none;" id="applicationsList">
+        <h3>Applications</h3>
+        {% for a in apps %}
+        <!-- Add a dynamic ID or class using a['app_id'] -->
+        <div class="application-post list-group-item {% if a['status'] %}accepted-application{% endif %}" id="application-item-{{ a['app_id'] }}">
+            {{ a['user_id'] }}
+            {{ a['course'] }}
+            <span class="badge badge-primary"> {{ a['role'] }} </span>
+            <p>User: <span id="user-id">{{ a['user_id']}}</span></p>
+            <p>Job ID: <span id="job-id">{{ a['job_id'] }}</span></p>
+            <p>App ID: <span id="app-id">{{a['app_id'] }}</span></p>
+            <p>Editable: <span id="app-status">{% if a['editable'] %} Open {% else %} Closed {% endif %}</span></p>
+            <a href="{{ url_for('view_application', app_id = a['app_id'])}}" id="app-view" class="btn btn-primary">View</a>
+            <button id="app-oc" class="btn btn-primary" onclick="openCloseApplicationEditing({{ a['app_id'] }})">Open/Close</button>
+            <button id="app-acc" class="btn btn-primary" onclick="confirmAndAcceptApplication({{ a['app_id'] }})">Accept</button>
+            <button id="app-rej" class="btn btn-danger" onclick="confirmAndRemoveApplication({{ a['app_id'] }})">Reject</button>
+        </div>
+        <div></div>
+        {% endfor %}
+    </div>    
+    <div class="flex-child" style="display: none;" id="usersList">
+        <h3>Users</h3>
+        {% for u in users %}
+        <div class="application-post list-group-item">
+            <p>User ID: {{ u['user_id'] }}</p>
+            <p>Name: {{ u['fname'] }} {{ u['lname'] }}</p> <!-- Assuming you want to display the name -->
+            <p>Major: {{ u['major']}}</p>
+            <p>Email: {{ u['email'] }}</p>
+            {% if u['role'] == 5%}
+            <span class="badge badge-primary">User Type: Admin</span>
+            {% else %}
+            <span class="badge badge-primary">User Type: Student</span>
+            {% endif %}
+            <!-- You can add other fields like major, degree, etc., similar to the above line -->
+        </div>
+        <div></div>
+        {% endfor %}
+    </div>
+    <div class="flex-child"></div>
+</div>
+</div>
+
+<!-- I added this to see if there were users with the same email before making emails unique true
+this doesn't have to stay but please leave for now for debugging purposes -->
+
+
+{% endblock %}

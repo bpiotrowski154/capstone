@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>My Applications</h2>
+
+{% if applications %}
+    {% for a in applications %}
+    <li class="list-group-item">
+        <h5>{{ a[0] }} - {{ a[6] }} <span class="badge badge-primary">{{ a[1] }}</span></h5>
+        <!--<p id="job-course-id" value="{{a[4]}}">Course ID: {{a[4]}}</p> -->
+        <!--<p>{% if a[1] == 1 %}*Requires Certification{% else %}&nbsp;{% endif %}</p> -->
+        <p>Job ID: {{ a [5] }}</p>
+        <p>App ID: {{ a[4] }}</p>
+        <p>Status: {% if a[3] %} Open {% else %} Closed {% endif %}</p>
+        {% if a[3] == False%}
+        <p>Currently Cannot be Edited. Please Contact Administrator</p>
+        {% else %}
+        <a id="app-edit" href = "{{ url_for('form.UpdateApplication', app_id= a[4])}}" class="btn btn-primary">Edit</a>
+        {% endif %}
+
+    </li>
+    <div></div>
+    {% endfor %}
+{% else %}
+    <p>No applications found.</p>
+{% endif %}
+
+{% endblock %}

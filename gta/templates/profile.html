@@ -1,0 +1,121 @@
+{% from 'bootstrap5/form.html' import render_form, render_field, render_form_row %}
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="alert alert-warning static-alert mb-4" role="alert">
+    ⚠️ Changes made here will be saved to your profile.
+</div>
+
+<h1>Your Profile</h1>
+
+<h3 class="mb-4">Current Settings</h3>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>User ID:</strong>
+            </div>
+            <div id="u-id" class="col-md-8">
+                {{ current_user.user_id }}
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>First Name:</strong>
+            </div>
+            <div id="u-fname" class="col-md-8">
+                {{ current_user.user_fname }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Last Name:</strong>
+            </div>
+            <div id="u-lname" class="col-md-8">
+                {{ current_user.user_lname }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Email:</strong>
+            </div>
+            <div id="u-email" class="col-md-8">
+                {{ current_user.user_email }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Role:</strong>
+            </div>
+            <div id="u-role" class="col-md-8">
+                {{ current_user.role_relation.role_name }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Major:</strong>
+            </div>
+            <div id="u-major" class="col-md-8">
+                {{ current_user.major_relation.major_name }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Degree:</strong>
+            </div>
+            <div id="u-degree" class="col-md-8">
+                {{ current_user.degree_relation.degree_name }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>GPA:</strong>
+            </div>
+            <div id="u-gpa" class="col-md-8">
+                {{ current_user.gpa }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Hours:</strong>
+            </div>
+            <div id="u-hours" class="col-md-8">
+                {{ current_user.hours }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Password:</strong>
+            </div>
+        </div>        
+    </div>
+</div>
+
+    <form action="/profile" method="post" class="my-4">
+
+        <div class="flex user-data">
+            <h3>Change profile settings</h3>
+                {{ form.csrf_token() }}
+                {{ render_field(form.user_fname, class="input-width") }}
+                {{ render_field(form.user_lname, class="input-width") }}
+                {{ render_field(form.user_email, class="input-width") }}
+                {{ render_field(form.user_major, class="input-width") }}
+                {{ render_field(form.user_degree, class="input-width") }}
+                {{ render_field(form.user_gpa, class="input-width") }}
+                {{ render_field(form.user_hours, class="input-width") }}
+                {{ render_field(form.ucourses) }}
+                {{ render_field(form.submit, class="submit-button") }}
+        </div>
+
+    </form>
+{% endblock %}

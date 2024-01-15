@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form id="search-form" class="search-form">
+    <input type="text" id="query" name="query" placeholder="Search for jobs..." required>
+    <button id="search-submit" type="submit">&#8981</button>
+</form>
+
+<div class="flex-container">
+    <div class="flex-child">
+        <h2 id="job-list-title">Job Listings </h2>
+        <form class="form-filter">
+            <select id="course-filter" class="select-filter" onchange="filterJobs()">
+                {% for c in courses %}
+                <option value="{{ c[0] }}">{{ c[1] }}</option>
+                {% endfor %}
+            </select>
+            <select id="role-filter" class="select-filter" onchange="filterJobs()">
+                {% for r in roles %}
+                <option value="{{ r[0] }}">{{ r[1] }}</option>
+                {% endfor %}
+            </select>
+            <div class="checkbox-custom">
+                <input type="checkbox" id="cert-filter" onclick="filterJobs()">
+                <label for="cert-filter">Certification Required</label>
+            </div>
+        </form>        
+        <div>
+            <h1></h1>
+        </div>
+        <ul id="job-list-group" class="list-group">
+            {% for j in jobs %}
+                <li class="list-group-item">
+                    <h5 id="job-name">{{ j[0] }} - {{j[3]}} <span class="badge badge-primary">{{ j[2] }}</span></h5>
+                    <p id="job-course-id" value="{{j[4]}}">Course ID: {{j[4]}}</p>
+                    <p id="cert-req">{% if j[1] == 1 %}<span class="badge badge-primary">Certification Required</span>{% else %}&nbsp;{% endif %}</p>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('form.Apply', job_id=loop.index|string) }}" class="btn apply-btn">Apply</a>
+                    {% else %}
+                        <a href="/login" class="btn apply-btn">Apply</a>
+                    {% endif %}
+                </li>
+                <div></div>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+    <script>
+        var jobs = {{ jobs2|tojson|safe }};
+    </script>
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}
