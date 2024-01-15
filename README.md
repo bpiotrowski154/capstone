@@ -15,7 +15,7 @@ Pull Repository
 
 Virtual Environment Setup
 
-    cd swe-capstone
+    cd capstone
     python -m venv venv 
 
 Activate Virtual Environment (Must do every time you launch, you'll see (venv) in your terminal) 
